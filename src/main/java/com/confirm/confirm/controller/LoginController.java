@@ -23,7 +23,7 @@ public class LoginController {
 
     @GetMapping("/login")
     public String getLogin() {
-        return "Login.html";
+        return "login.html";
     }
 
     @PostMapping("/login")
