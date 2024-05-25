@@ -1,6 +1,6 @@
 package com.confirm.confirm.controller;
 
-import com.confirm.confirm.dto.LoginData;
+import com.confirm.confirm.dto.Login;
 import com.confirm.confirm.service.LoginService;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +30,7 @@ public class LoginController {
     public String postLogin(@RequestBody Map<String, String> requestBody, HttpServletResponse response) {
         response.addCookie(
                 loginService.login(
-                        new LoginData(requestBody.get("id"), requestBody.get("password"))));
+                        new Login(requestBody.get("id"), requestBody.get("password"))));
 
         return "redirect:/";
     }
