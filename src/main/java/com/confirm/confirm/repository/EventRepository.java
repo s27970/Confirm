@@ -1,8 +1,9 @@
 package com.confirm.confirm.repository;
 
 
-import jdk.jfr.Event;
-import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface EventRepository extends JpaRepository<Event, Long> {
+import org.springframework.data.jpa.repository.JpaRepository;
+import com.confirm.confirm.entity.EventJPA;
+
+public interface EventRepository extends JpaRepository<EventJPA, Long> {
 }
