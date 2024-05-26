@@ -23,7 +23,7 @@ public class MainPageController {
     public String getJobList(Model model) {
         List<PostingCardDTO> postingCardDTOList = jobService.getAllJobs();
         model.addAttribute("jobList", postingCardDTOList);
-        return "index";
+        return "mainpage";
     }
 }
 
