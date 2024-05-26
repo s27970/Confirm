@@ -19,6 +19,6 @@ public class FairListController {
     public String getFairList(Model model) {
         model.addAttribute("fairs", fairService.getFairList());
 
-        return "fairList.html";
+        return "fairList";
     }
 }
