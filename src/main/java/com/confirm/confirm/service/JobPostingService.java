@@ -1,7 +1,7 @@
 package com.confirm.confirm.service;
 
 import com.confirm.confirm.dto.PostingCardDTO;
-import com.confirm.confirm.entity.Hire;
+import com.confirm.confirm.entity.HIRE;
 import com.confirm.confirm.repository.HireRepository;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +18,7 @@ public class JobPostingService {
     }
 
     public List<PostingCardDTO> getAllJobs() {
-        List<Hire> jobList = jobRepository.findAll();
+        List<HIRE> jobList = jobRepository.findAll();
 
         // Job 리스트를 PostingCardDTO 리스트로 변환
         return jobList.stream()

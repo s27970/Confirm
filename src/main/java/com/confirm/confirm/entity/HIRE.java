@@ -7,7 +7,8 @@ import java.util.Date;
 
 @Entity
 @Getter
-public class Hire {
+
+public class HIRE {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

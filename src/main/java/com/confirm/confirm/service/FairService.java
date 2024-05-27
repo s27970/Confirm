@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 public class FairService {
     public List<FairListData> getFairList() {
-        return Arrays.asList(new FairListData(
+        return List.of(new FairListData(
                 "images/firm1.png",
                 "LX 지리데이터 행사",
                 "LX 한국국토정보공사",
