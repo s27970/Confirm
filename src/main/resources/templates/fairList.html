@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Section UI Design - Login Form</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="images/favicon-tailwindcss.png">
+    <link rel="icon" href="/images/logo.png">
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- tailwind config Import -->
-    <script src="script/tailwind.config.js"></script>
+    <script src="/js/tailwind.config.js"></script>
     <!-- Custom CSS -->
-    <link href="css/style.css" rel="stylesheet">
-    <link rel="icon" href="images/favicon-tailwindcss.png">
+    <link href="/css/style.css" rel="stylesheet">
+    <link rel="icon" href="/images/logo.png">
      <!-- Remix Icons CDN -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css">
 </head>
@@ -70,7 +70,7 @@
         }, 10000); // 3초마다 슬라이드 자동 변경
     </script>
 
-
+<!--
 <br>
 
     <section class="행사 목록">
@@ -92,7 +92,7 @@
                             <span th:text="${fair.organizerName}">LX 한국국토정보공사</span>
                         </div>
                         <div class="flex gap-6 text-[20px] border-y-[1px] p-4">
-                            <span class="text-[13px]" th:text="${fair.keyword}">#지리 정보</b>
+                            <span class="text-[13px]" th:text="${fair.keyword}"/>
                         </div>
                         <div class="p-4">
                             <span class="font-semibold text-[13px] text-gray-500 capitalize">행사 정보</span>
@@ -124,7 +124,7 @@
                             <span th:text="${fair.organizerName}">LX 한국국토정보공사</span>
                         </div>
                         <div class="flex gap-6 text-[20px] border-y-[1px] p-4">
-                            <span class="text-[13px]" th:text="${fair.keyword}">#지리 정보</b>
+                            <span class="text-[13px]" th:text="${fair.keyword}"/>
                         </div>
                         <div class="p-4">
                             <span class="font-semibold text-[13px] text-gray-500 capitalize">행사 정보</span>
@@ -156,7 +156,7 @@
                             <span th:text="${fair.organizerName}">LX 한국국토정보공사</span>
                         </div>
                         <div class="flex gap-6 text-[20px] border-y-[1px] p-4">
-                            <span class="text-[13px]" th:text="${fair.keyword}">#지리 정보</b>
+                            <span class="text-[13px]" th:text="${fair.keyword}"/>
                         </div>
                         <div class="p-4">
                             <span class="font-semibold text-[13px] text-gray-500 capitalize">행사 정보</span>
@@ -174,7 +174,7 @@
             </div>
         </div>
     </section>
-
+-->
 
     <section class="행사 목록" th:each="fair : ${fairs}">
         <div class="max-w-[1280px] mx-auto p-4 grid place-items-center">
@@ -195,7 +195,7 @@
                             <span th:text="${fair.organizerName}">전북대학교</span>
                         </div>
                         <div class="flex gap-6 text-[20px] border-y-[1px] p-4">
-                            <span class="text-[13px]" th:text="${fair.keyword}">키워드</b>
+                            <span class="text-[13px]" th:text="${fair.keyword}"/>
                         </div>
                         <div class="p-4">
                             <span class="font-semibold text-[13px] text-gray-500 capitalize">행사 정보</span>
