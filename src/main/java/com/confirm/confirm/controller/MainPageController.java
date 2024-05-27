@@ -45,6 +45,15 @@ public class MainPageController {
         return "jobRec"; // jobRec.html로 이동
     }
 
+    @GetMapping("/logib")
+    public String login() {
+        return "login";
+    }
+
+    @GetMapping("/register")
+    public String register() {
+        return "register";
+    }
 
 }
 
