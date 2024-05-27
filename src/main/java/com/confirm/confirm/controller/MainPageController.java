@@ -19,7 +19,7 @@ public class MainPageController {
         this.jobService = jobService;
     }
 
-    @GetMapping("/mainpage")
+    @GetMapping("/")
     public String getJobList(Model model) {
         List<PostingCardDTO> postingCardDTOList = jobService.getAllJobs();
         model.addAttribute("jobList", postingCardDTOList);
