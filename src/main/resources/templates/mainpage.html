@@ -15,21 +15,26 @@
     <link href="/css/style.css" rel="stylesheet">
     <link rel="icon" href="/images/logo.png">
      <!-- Remix Icons CDN -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css">
+    <script src="/js/navigateTo.js"></script> <!-- 또는 navigation.js -->
 </head>
 <body>
-    <section class="border-b border-gray-200 ">
+
+
+
+
+    <section class="border-b border-gray-200">
         <div class="max-w-[1280px] mx-auto p-4 flex justify-between items-center">
             <div class="flex gap-10 items-center">
                 <div class="flex gap-1 items-center">
-                <button><img class="w-[30px] border-5 border-white" src="/images/logo.png" alt="logo"></button>
-                <button class="text-2xl font-bold font-archivo leading-[1.6em] translate-y-[-2px]">CONFIRM</button>
+                    <button onclick="navigateTo('mainpage')"><img class="w-[30px] border-5 border-white cursor-pointer" src="/images/logo.png" alt="logo"></button>
+                    <button class="text-2xl font-bold leading-[1.6em] translate-y-[-2px] cursor-pointer" onclick="navigateTo('mainpage')">CONFIRM</button>
                 </div>
 
                 <div class="flex justify-start gap-4 space-x-8">
-                    <a role="tab" class="text-[18px] font-bold">채용공고</a>
-                    <a role="tab" class="text-[18px] font-bold tab-active">행사정보</a>
-                    <a role="tab" class="text-[18px] font-bold">공고등록</a>
+                    <a role="tab" class="text-[18px] font-bold px-4 py-2 rounded bg-white hover:bg-white active:bg-white cursor-pointer" onclick="navigateTo('jobPostingPage')">채용공고</a>
+                    <a role="tab" class="text-[18px] font-bold px-4 py-2 rounded bg-white hover:bg-white active:bg-white cursor-pointer tab-active" onclick="navigateTo('fairList')">행사정보</a>
+                    <a role="tab" class="text-[18px] font-bold px-4 py-2 rounded bg-white hover:bg-white active:bg-white cursor-pointer" onclick="navigateTo('jobRec')">공고등록</a>
                 </div>
             </div>
 

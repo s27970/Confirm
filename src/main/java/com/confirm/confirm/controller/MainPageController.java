@@ -25,5 +25,26 @@ public class MainPageController {
         model.addAttribute("jobList", postingCardDTOList);
         return "mainpage";
     }
+    @GetMapping("/mainpage")
+    public String mainpage() {
+        return "mainpage"; // mainpage.html로 이동
+    }
+
+    @GetMapping("/jobPostingPage")
+    public String jobPostingPage() {
+        return "jobPostingPage"; // jobPostingPage.html로 이동
+    }
+
+    @GetMapping("/fairList")
+    public String fairList() {
+        return "fairList"; // fairList.html로 이동
+    }
+
+    @GetMapping("/jobRec")
+    public String jobRec() {
+        return "jobRec"; // jobRec.html로 이동
+    }
+
+
 }
 
