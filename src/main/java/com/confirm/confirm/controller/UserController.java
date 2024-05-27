@@ -1,71 +1,74 @@
 package com.confirm.confirm.controller;
 
-
 import com.confirm.confirm.entity.User;
-import com.confirm.confirm.repository.UserRepository;
+import com.confirm.confirm.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
-import java.util.Optional;
 
-@RestController
-@RequestMapping("/api/users")
+@Controller
+@RequestMapping("/users")
 public class UserController {
 
+    private static final String REDIRECT_USERS = "redirect:/users";
+
     @Autowired
-    private UserRepository userRepository;
+    private UserService userService;
+
+    // Create a new user form
+    @GetMapping("/new")
+    public String newUserForm() {
+        return "new_user.html";
+    }
 
     // Create a new user
     @PostMapping
-    public ResponseEntity<User> createUser(@RequestBody User user) {
-        User savedUser = userRepository.save(user);
-        return ResponseEntity.ok(savedUser);
+    public String createUser(@RequestBody User user) {
+        userService.saveUser(user);
+        return REDIRECT_USERS;
     }
 
     // Get all users
     @GetMapping
-    public ResponseEntity<List<User>> getAllUsers() {
-        List<User> users = userRepository.findAll();
-        return ResponseEntity.ok(users);
+    public ModelAndView getAllUsers() {
+        List<User> users = userService.getAllUsers();
+        ModelAndView mav = new ModelAndView("users.html");
+        mav.addObject("users", users);
+        return mav;
     }
 
     // Get user by ID
     @GetMapping("/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable String id) {
-        Optional<User> user = userRepository.findById(id);
-        return user.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    public ModelAndView getUserById(@PathVariable String id) {
+        User user = userService.getUserById(id);
+        ModelAndView mav = new ModelAndView("user_details.html");
+        mav.addObject("user", user);
+        return mav;
+    }
+
+    // Update user form
+    @GetMapping("/{id}/edit")
+    public ModelAndView editUserForm(@PathVariable String id) {
+        User user = userService.getUserById(id);
+        ModelAndView mav = new ModelAndView("edit_user.html");
+        mav.addObject("user", user);
+        return mav;
     }
 
     // Update user
-    @PutMapping("/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable String id, @RequestBody User userDetails) {
-        Optional<User> userOptional = userRepository.findById(id);
-        if (!userOptional.isPresent()) {
-            return ResponseEntity.notFound().build();
-        }
-
-        User user = userOptional.get();
-        user.setUserName(userDetails.getUserName());
-        user.setUserPassword(userDetails.getUserPassword());
-        user.setUserSchool(userDetails.getUserSchool());
-        user.setUserCareer(userDetails.getUserCareer());
-        user.setUserPreviousJobCategory(userDetails.getUserPreviousJobCategory());
-
-        User updatedUser = userRepository.save(user);
-        return ResponseEntity.ok(updatedUser);
+    @PostMapping("/{id}/edit")
+    public String updateUser(@PathVariable String id, @RequestBody User userDetails) {
+        userService.updateUser(id, userDetails);
+        return REDIRECT_USERS;
     }
 
     // Delete user
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable String id) {
-        Optional<User> userOptional = userRepository.findById(id);
-        if (userOptional.isEmpty()) {
-            return ResponseEntity.notFound().build();
-        }
-
-        userRepository.deleteById(id);
-        return ResponseEntity.noContent().build();
+    @PostMapping("/{id}/delete")
+    public String deleteUser(@PathVariable String id) {
+        userService.deleteUser(id);
+        return REDIRECT_USERS;
     }
 }
