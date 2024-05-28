@@ -19,15 +19,11 @@ public class MainPageController {
         this.jobService = jobService;
     }
 
-    @GetMapping("/")
+    @GetMapping("/mainpage")
     public String getJobList(Model model) {
         List<PostingCardDTO> postingCardDTOList = jobService.getAllJobs();
         model.addAttribute("jobList", postingCardDTOList);
         return "mainpage";
-    }
-    @GetMapping("/mainpage")
-    public String mainpage() {
-        return "mainpage"; // mainpage.html로 이동
     }
 
     @GetMapping("/jobPostingPage")

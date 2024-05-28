@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Section UI Design - Login Form</title>
@@ -10,9 +10,9 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- tailwind config Import -->
-    <script src="script/tailwind.config.js"></script>
+    <script src="/js/tailwind.config.js"></script>
     <!-- Custom CSS -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
     <link rel="icon" href="images/favicon-tailwindcss.png">
      <!-- Remix Icons CDN -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css">
@@ -48,12 +48,15 @@
     <div class="flex justify-center items-center mt-12">
         <div class="flex justify-center items-center mt-12">
             <div class="max-w-[1280px] w-screen h-32 relative overflow-hidden bg-white flex justify-end items-center p-4">
-                <div class="bg-gray-100 p-1 rounded-lg"> <!-- 연한 회색 배경 및 라운드 사각형 추가 -->
-                    <button id="newestBtn" class="py-2 px-4 bg-gray-100 text-black font-bold text-lg rounded transition duration-300 ease-in-out focus:outline-none" onclick="toggle('newest')">최신순</button>
-
-                    <button id="popularBtn" class="py-2 px-4 bg-white text-black font-bold text-lg rounded transition duration-300 ease-in-out focus:outline-none" onclick="toggle('popular')">인기순</button>
+                <div class="bg-gray-100 p-1 rounded-lg">
+                    <button id="newestBtn" class="py-2 px-4 bg-gray-100 text-black font-bold text-lg rounded transition duration-300 ease-in-out focus:outline-none" onclick="toggle('LATEST')">최신순</button>
+                    <button id="popularBtn" class="py-2 px-4 bg-white text-black font-bold text-lg rounded transition duration-300 ease-in-out focus:outline-none" onclick="toggle('POPULARITY')">인기순</button>
                 </div>
             </div>
+        </div>
+
+        <div id="jobList" class="mt-4">
+            <!-- 채용 공고 목록이 여기에 표시됩니다 -->
         </div>
 
         <script>
@@ -61,12 +64,12 @@
                 var newestBtn = document.getElementById('newestBtn');
                 var popularBtn = document.getElementById('popularBtn');
 
-                if (selected == 'newest') {
+                if (selected === 'LATEST') {
                     newestBtn.classList.remove('bg-gray-100');
                     newestBtn.classList.add('bg-white');
                     popularBtn.classList.add('bg-gray-100');
                     popularBtn.classList.remove('bg-white');
-                } else if (selected == 'popular') {
+                } else if (selected === 'POPULARITY') {
                     popularBtn.classList.remove('bg-gray-100');
                     popularBtn.classList.add('bg-white');
                     newestBtn.classList.add('bg-gray-100');
@@ -74,7 +77,7 @@
                 }
 
                 // AJAX 요청으로 데이터 가져오기
-                fetch(`/jobs?sort=${selected}`)
+                fetch(`/jobs?criteria=${selected}`)
                     .then(response => response.json())
                     .then(data => {
                         // 데이터를 받아서 화면에 갱신
@@ -83,47 +86,30 @@
             }
 
             function updateJobList(data) {
-                const jobSection = document.querySelector('.채용 공고');
-                jobSection.innerHTML = '';  // 기존 내용 지우기
+                var jobList = document.getElementById('jobList');
+                jobList.innerHTML = ''; // 기존 내용을 지웁니다.
 
                 data.forEach(job => {
-                    const jobElement = document.createElement('div');
-                    jobElement.classList.add('w-[360px]', 'rounded-xl', 'overflow-hidden', 'shadow-xl', 'bg-white', 'group');
-                    jobElement.innerHTML = `
-                <div class="h-[150px] relative overflow-hidden">
-                    <img class="object-cover w-full h-full group-hover:scale-110 transition-all duration-[600ms]"
-                         src="${job.imagePath}"
-                         alt="house thumb">
-                    <button class="text-white absolute right-[20px] top-[10px] text-[25px] cursor-pointer active:scale-[0.8] transition-all duration-[300ms]"><i class="ri-heart-3-line"></i></button>
-                    <h3 class="text-3xl my-1 text-white absolute bottom-0 left-0 p-4">${job.companyName}</h3>
-                </div>
-                <div class="min-h-[250px]">
-                    <div class="p-4">
-                        <div>
-                            <b class="text-[14px] pr-2">회사 규모</b>
-                            <span class="border-l-[1px] pl-4 text-[14px] font-semibold">${job.companySize}</span>
-                        </div>
-                        <span>${job.industry}</span>
-                    </div>
-                    <div class="flex gap-6 text-[20px] border-y-[1px] p-4">
-                        <!-- 정보 반복 -->
-                    </div>
-                    <div class="p-4">
-                        <span class="font-semibold text-[13px] text-gray-500 capitalize">채용 관련 정보</span>
-                        <div class="flex gap-3 mt-2">
-                            <div class="text-[14px]">
-                                <b class="block">${job.position1}</b>
-                                <span>${job.position2}</span>
-                            </div>
-                            <button class="uppercase bg-sky-400 text-white font-medium rounded-md px-5 ml-auto hover:bg-sky-500">채용 공고</button>
-                        </div>
+                    var jobItem = document.createElement('div');
+                    jobItem.className = 'job-item p-4 mb-4 bg-white rounded shadow';
+                    jobItem.innerHTML = `
+                <div class="flex items-center">
+                    <img src="${job.imagePath}" alt="${job.companyName}" class="w-20 h-20 rounded mr-4">
+                    <div>
+                        <h3 class="text-xl font-bold">${job.companyName}</h3>
+                        <p class="text-sm">${job.industry}</p>
+                        <p class="text-sm">${job.position1} | ${job.position2}</p>
                     </div>
                 </div>
             `;
-                    jobSection.appendChild(jobElement);
+                    jobList.appendChild(jobItem);
                 });
             }
+
+            // 초기 로드 시 최신순으로 정렬된 데이터를 가져옵니다.
+            document.addEventListener('DOMContentLoaded', () => toggle('LATEST'));
         </script>
+
 
     </div>
 

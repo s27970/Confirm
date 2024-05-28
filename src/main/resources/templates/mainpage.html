@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Section UI Design - Login Form</title>
@@ -16,6 +16,7 @@
     <link rel="icon" href="/images/logo.png">
      <!-- Remix Icons CDN -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css">
+
 </head>
 <body>
 
@@ -26,10 +27,10 @@
         <div class="max-w-[1280px] mx-auto p-4 flex justify-between items-center">
             <div class="flex gap-10 items-center">
                 <div class="flex gap-1 items-center">
-                    <a href="/mainpage">
+                    <a href="/">
                         <img class="w-[30px] border-5 border-white cursor-pointer" src="/images/logo.png" alt="logo">
                     </a>
-                    <a href="/mainpage" class="text-2xl font-bold leading-[1.6em] translate-y-[-2px] cursor-pointer">
+                    <a href="/" class="text-2xl font-bold leading-[1.6em] translate-y-[-2px] cursor-pointer">
                         CONFIRM
                     </a>
 
@@ -50,20 +51,16 @@
     </section>
 
     <div class="flex justify-center items-center mt-12">
-        <div class="max-w-[1280px] w-screen h-32 relative overflow-hidden rounded-lg bg-gray-200 flex justify-center items-center p-4">
-
-            <div class="flex justify-center items-center space-x-4">
-
-                <img src="/images/매칭.png" alt="Description" class="w-40 h-40">
-
-                <span class="text-2xl text-gray-700 font-bold">나와 비슷한 스펙을 가진 현직자 만나기</span>
-
-                <button class="py-3 px-5 bg-gray-100 text-blue-500 font-bold text-lg rounded hover:bg-gray-200 transition duration-300 ease-in-out"> <!-- 버튼 크기와 텍스트 크기를 조정 -->
+        <div class="max-w-[1280px] w-screen h-64 relative overflow-hidden rounded-lg" style="background-image: url('/images/매칭.png'); background-size: cover; background-position: center;">
+            <div class="flex justify-center items-center space-x-4 bg-black bg-opacity-50 w-full h-full p-4 rounded-lg">
+                <span class="text-2xl text-white font-bold">나와 비슷한 스펙을 가진 현직자 만나기</span>
+                <button class="py-3 px-5 bg-gray-100 text-blue-500 font-bold text-lg rounded hover:bg-gray-200 transition duration-300 ease-in-out">
                     지금 시작하기
                 </button>
             </div>
         </div>
     </div>
+
 
 
 
@@ -107,138 +104,97 @@
 
 
     <section class="AI 추천 공고">
-        <div class="max-w-[1280px] mx-auto p-4 grid place-items-center">
-            <div class="flex gap-[100px] items-center">
-                <div class="w-[360px] rounded-xl overflow-hidden shadow-xl bg-white group">
-                    <!-- 이미지 영역의 높이를 h-[150px]로 줄임 -->
-                    <div class="h-[150px] relative overflow-hidden">
-                        <img class="object-cover w-full h-full group-hover:scale-110 transition-all duration-[600ms]" src="/images/firm1.png" alt="house thum">
-                        <button class="text-white absolute right-[20px] top-[10px] text-[25px] cursor-pointer active:scale-[0.8] transition-all duration-[300ms]"><i class="ri-heart-3-line"></i></button>
-                        <!-- 이미지 안에 흰색 텍스트로 '회사 명' 추가 -->
-                        <h3 class="text-3xl my-1 text-white absolute bottom-0 left-0 p-4">회사 명</h3>
-                    </div>
-                    <!-- 내용 영역의 최소 높이를 min-h-[250px]로 줄임 -->
-                    <div class="min-h-[250px]">
-                        <div class="p-4">
-                            <div>
-                                <b class="text-[14px] pr-2">회사 규모</b>
-                                <span class="border-l-[1px] pl-4 text-[14px] font-semibold">중견 기업</span>
-                            </div>
-                            <!-- 이미지 안으로 이동된 '회사 명' 텍스트 삭제 -->
-                            <span>산업 분야 / 산업 분야</span>
-                        </div>
-                        <div class="flex gap-6 text-[20px] border-y-[1px] p-4">
-                            <div class="flex items-center">
-                                <span><i class="ri-money-dollar-circle-line"></i></span>
-                                <span class="text-[16px] mx-2">월급</span>
-                            </div>
-                            <div class="flex items-center">
-                                <span><i class="ri-road-map-line"></i></span>
-                                <span class="text-[16px] mx-2">위치</span>
-                            </div>
-                            <div class="flex items-center">
-                                <span><i class="ri-account-circle-line"></i></span>
-                                <span class="text-[16px] mx-2">학력</span>
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <span class="font-semibold text-[13px] text-gray-500 capitalize">채용 관련 정보</span>
-                            <div class="flex gap-3 mt-2">
-                                <div class="text-[14px]">
-                                    <b class="block">⦁ 해외영업 팀장(리더급)</b>
-                                    <span>⦁ PM (Product Manager)</span>
+        <div class="max-w-[1280px] mx-auto p-4">
+            <div class="flex flex-wrap -mx-4">
+                <!-- 첫 번째 카드 -->
+                <div class="w-full md:w-1/3 px-4 mb-8">
+                    <div class="overflow-hidden bg-white group rounded-xl shadow-xl">
+                        <div class="h-[150px] relative overflow-hidden">
+                            <img class="object-cover w-full h-full group-hover:scale-110 transition-all duration-[600ms]"
+                                 src="/images/firm1.png"
+                                 alt="house thumb">
+                            <button class="text-white absolute right-[20px] top-[10px] text-[25px] cursor-pointer active:scale-[0.8] transition-all duration-[300ms]">
+                                <i class="ri-heart-3-line"></i>
+                            </button>
+                            <div class="absolute bottom-0 left-0 w-full bg-black bg-opacity-50 p-4 text-white">
+
+                                <div class="text-[12px]">
+                                    <b class="pr-2">회사 규모</b>
+                                    <span class="border-l-[1px] pl-2 font-semibold">중견 기업</span>
                                 </div>
-                                <button class="uppercase bg-sky-400 text-white font-medium rounded-md px-5 ml-auto hover:bg-sky-500">채용 공고</button>
+                                <div class="text-[12px] mt-1">
+                                    <b class="pr-2">산업분야</b>
+                                    <span>산업 분야 / 산업 분야</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-4 text-left" style="padding-left: 0;">
+                            <a href="#" class="text-md font-bold">회사 명</a>
+                            <div class="text-[10px] mt-2">
+                                <b class="pr-2">포지션: </b>
+                                <span>⦁ 해외영업 팀장(리더급) | PM (Product Manager)</span>
                             </div>
                         </div>
                     </div>
                 </div>
+                <!-- 두 번째 카드 -->
+                <div class="w-full md:w-1/3 px-4 mb-8">
+                    <div class="overflow-hidden bg-white group rounded-xl shadow-xl">
+                        <div class="h-[150px] relative overflow-hidden">
+                            <img class="object-cover w-full h-full group-hover:scale-110 transition-all duration-[600ms]"
+                                 src="/images/firm2.png"
+                                 alt="house thumb">
+                            <button class="text-white absolute right-[20px] top-[10px] text-[25px] cursor-pointer active:scale-[0.8] transition-all duration-[300ms]">
+                                <i class="ri-heart-3-line"></i>
+                            </button>
+                            <div class="absolute bottom-0 left-0 w-full bg-black bg-opacity-50 p-4 text-white">
 
-                <div class="w-[360px] rounded-xl overflow-hidden shadow-xl bg-white group">
-                    <!-- 이미지 영역의 높이를 h-[150px]로 줄임 -->
-                    <div class="h-[150px] relative overflow-hidden">
-                        <img class="object-cover w-full h-full group-hover:scale-110 transition-all duration-[600ms]" src="/static/images/firm1.png" alt="house thum">
-                        <button class="text-white absolute right-[20px] top-[10px] text-[25px] cursor-pointer active:scale-[0.8] transition-all duration-[300ms]"><i class="ri-heart-3-line"></i></button>
-                        <!-- 이미지 안에 흰색 텍스트로 '회사 명' 추가 -->
-                        <h3 class="text-3xl my-1 text-white absolute bottom-0 left-0 p-4">회사 명</h3>
-                    </div>
-                    <!-- 내용 영역의 최소 높이를 min-h-[250px]로 줄임 -->
-                    <div class="min-h-[250px]">
-                        <div class="p-4">
-                            <div>
-                                <b class="text-[14px] pr-2">회사 규모</b>
-                                <span class="border-l-[1px] pl-4 text-[14px] font-semibold">중견 기업</span>
-                            </div>
-                            <!-- 이미지 안으로 이동된 '회사 명' 텍스트 삭제 -->
-                            <span>산업 분야 / 산업 분야</span>
-                        </div>
-                        <div class="flex gap-6 text-[20px] border-y-[1px] p-4">
-                            <div class="flex items-center">
-                                <span><i class="ri-money-dollar-circle-line"></i></span>
-                                <span class="text-[16px] mx-2">월급</span>
-                            </div>
-                            <div class="flex items-center">
-                                <span><i class="ri-road-map-line"></i></span>
-                                <span class="text-[16px] mx-2">위치</span>
-                            </div>
-                            <div class="flex items-center">
-                                <span><i class="ri-account-circle-line"></i></span>
-                                <span class="text-[16px] mx-2">학력</span>
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <span class="font-semibold text-[13px] text-gray-500 capitalize">채용 관련 정보</span>
-                            <div class="flex gap-3 mt-2">
-                                <div class="text-[14px]">
-                                    <b class="block">⦁ 해외영업 팀장(리더급)</b>
-                                    <span>⦁ PM (Product Manager)</span>
+                                <div class="text-[12px]">
+                                    <b class="pr-2">회사 규모</b>
+                                    <span class="border-l-[1px] pl-2 font-semibold">중견 기업</span>
                                 </div>
-                                <button class="uppercase bg-sky-400 text-white font-medium rounded-md px-5 ml-auto hover:bg-sky-500">채용 공고</button>
+                                <div class="text-[12px] mt-1">
+                                    <b class="pr-2">산업분야</b>
+                                    <span>산업 분야 / 산업 분야</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-4 text-left" style="padding-left: 0;">
+                            <a href="#" class="text-md font-bold">회사 명</a>
+                            <div class="text-[10px] mt-2">
+                                <b class="pr-2">포지션: </b>
+                                <span>⦁ 마케팅 매니저 | 디지털 마케터</span>
                             </div>
                         </div>
                     </div>
                 </div>
+                <!-- 세 번째 카드 -->
+                <div class="w-full md:w-1/3 px-4 mb-8">
+                    <div class="overflow-hidden bg-white group rounded-xl shadow-xl">
+                        <div class="h-[150px] relative overflow-hidden">
+                            <img class="object-cover w-full h-full group-hover:scale-110 transition-all duration-[600ms]"
+                                 src="/images/firm3.png"
+                                 alt="house thumb">
+                            <button class="text-white absolute right-[20px] top-[10px] text-[25px] cursor-pointer active:scale-[0.8] transition-all duration-[300ms]">
+                                <i class="ri-heart-3-line"></i>
+                            </button>
+                            <div class="absolute bottom-0 left-0 w-full bg-black bg-opacity-50 p-4 text-white">
 
-                <div class="w-[360px] rounded-xl overflow-hidden shadow-xl bg-white group">
-                    <!-- 이미지 영역의 높이를 h-[150px]로 줄임 -->
-                    <div class="h-[150px] relative overflow-hidden">
-                        <img class="object-cover w-full h-full group-hover:scale-110 transition-all duration-[600ms]" src="/static/images/firm1.png" alt="house thum">
-                        <button class="text-white absolute right-[20px] top-[10px] text-[25px] cursor-pointer active:scale-[0.8] transition-all duration-[300ms]"><i class="ri-heart-3-line"></i></button>
-                        <!-- 이미지 안에 흰색 텍스트로 '회사 명' 추가 -->
-                        <h3 class="text-3xl my-1 text-white absolute bottom-0 left-0 p-4">회사 명</h3>
-                    </div>
-                    <!-- 내용 영역의 최소 높이를 min-h-[250px]로 줄임 -->
-                    <div class="min-h-[250px]">
-                        <div class="p-4">
-                            <div>
-                                <b class="text-[14px] pr-2">회사 규모</b>
-                                <span class="border-l-[1px] pl-4 text-[14px] font-semibold">중견 기업</span>
-                            </div>
-                            <!-- 이미지 안으로 이동된 '회사 명' 텍스트 삭제 -->
-                            <span>산업 분야 / 산업 분야</span>
-                        </div>
-                        <div class="flex gap-6 text-[20px] border-y-[1px] p-4">
-                            <div class="flex items-center">
-                                <span><i class="ri-money-dollar-circle-line"></i></span>
-                                <span class="text-[16px] mx-2">월급</span>
-                            </div>
-                            <div class="flex items-center">
-                                <span><i class="ri-road-map-line"></i></span>
-                                <span class="text-[16px] mx-2">위치</span>
-                            </div>
-                            <div class="flex items-center">
-                                <span><i class="ri-account-circle-line"></i></span>
-                                <span class="text-[16px] mx-2">학력</span>
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <span class="font-semibold text-[13px] text-gray-500 capitalize">채용 관련 정보</span>
-                            <div class="flex gap-3 mt-2">
-                                <div class="text-[14px]">
-                                    <b class="block">⦁ 해외영업 팀장(리더급)</b>
-                                    <span>⦁ PM (Product Manager)</span>
+                                <div class="text-[12px]">
+                                    <b class="pr-2">회사 규모</b>
+                                    <span class="border-l-[1px] pl-2 font-semibold">중견 기업</span>
                                 </div>
-                                <button class="uppercase bg-sky-400 text-white font-medium rounded-md px-5 ml-auto hover:bg-sky-500">채용 공고</button>
+                                <div class="text-[12px] mt-1">
+                                    <b class="pr-2">산업분야</b>
+                                    <span>산업 분야 / 산업 분야</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-4 text-left" style="padding-left: 0;">
+                            <a href="#" class="text-md font-bold">회사 명</a>
+                            <div class="text-[10px] mt-2">
+                                <b class="pr-2">포지션: </b>
+                                <span>⦁ 데이터 과학자 | 머신러닝 엔지니어</span>
                             </div>
                         </div>
                     </div>
@@ -252,43 +208,48 @@
     <div class="max-w-[1280px] mx-auto p-4 grid"></div>
 
 
-    <section class="채용 공고" th:each="job : ${jobList}">
-        <div class="max-w-[1280px] mx-auto p-4 grid place-items-center">
-            <div class="flex gap-[100px] items-center">
-                <div class="w-[360px] rounded-xl overflow-hidden shadow-xl bg-white group">
-                    <div class="h-[150px] relative overflow-hidden">
-                        <img class="object-cover w-full h-full group-hover:scale-110 transition-all duration-[600ms]"
-                             th:src="@{${job.imagePath}}"
-                             alt="house thumb">
-                        <button class="text-white absolute right-[20px] top-[10px] text-[25px] cursor-pointer active:scale-[0.8] transition-all duration-[300ms]"><i class="ri-heart-3-line"></i></button>
-                        <h3 class="text-3xl my-1 text-white absolute bottom-0 left-0 p-4" th:text="${job.companyName}">회사 명</h3>
-                    </div>
-                    <div class="min-h-[250px]">
-                        <div class="p-4">
-                            <div>
-                                <b class="text-[14px] pr-2">회사 규모</b>
-                                <span class="border-l-[1px] pl-4 text-[14px] font-semibold" th:text="${job.companySize}">중견 기업</span>
-                            </div>
-                            <span th:text="${job.industry}">산업 분야 / 산업 분야</span>
-                        </div>
-                        <div class="flex gap-6 text-[20px] border-y-[1px] p-4">
-                            <!-- 정보 반복 -->
-                        </div>
-                        <div class="p-4">
-                            <span class="font-semibold text-[13px] text-gray-500 capitalize">채용 관련 정보</span>
-                            <div class="flex gap-3 mt-2">
-                                <div class="text-[14px]">
-                                    <b class="block" th:text="${job.position1}">⦁ 해외영업 팀장(리더급)</b>
-                                    <span th:text="${job.position2}">⦁ PM (Product Manager)</span>
+    <section class="채용 공고">
+        <div class="max-w-[1280px] mx-auto p-4">
+            <div class="flex flex-wrap -mx-4">
+                <div class="w-full md:w-1/3 px-4 mb-8" th:each="job, iterStat : ${jobList}">
+                    <div class="overflow-hidden bg-white group">
+                        <div class="h-[150px] relative overflow-hidden">
+                            <img class="object-cover w-full h-full group-hover:scale-110 transition-all duration-[600ms]"
+                                 th:src="@{${job.imagePath}}"
+                                 alt="house thumb">
+                            <button class="text-white absolute right-[20px] top-[10px] text-[25px] cursor-pointer active:scale-[0.8] transition-all duration-[300ms]">
+                                <i class="ri-heart-3-line"></i>
+                            </button>
+                            <div class="absolute bottom-0 left-0 w-full bg-black bg-opacity-50 p-4 text-white">
+                                <div class="text-[12px]">
+                                    <b class="pr-2">회사 규모</b>
+                                    <span class="border-l-[1px] pl-2 font-semibold" th:text="${job.companySize}">중견 기업</span>
                                 </div>
-                                <button class="uppercase bg-sky-400 text-white font-medium rounded-md px-5 ml-auto hover:bg-sky-500">채용 공고</button>
+                                <div class="text-[12px] mt-1">
+                                    <b class="pr-2">산업분야</b>
+                                    <span th:text="${job.industry}">산업 분야 / 산업 분야</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-4 text-left" style="padding-left: 0;">
+                            <a href="/* 링크 넣기 */" class="text-md font-bold" th:text="${job.companyName}">회사 명</a>
+                            <div class="text-[10px] mt-2">
+                                <b class="pr-2">포지션: </b>
+                                <span th:text="${job.position1} + ' | ' + ${job.position2}">⦁ 해외영업 팀장(리더급) | PM (Product Manager)</span>
                             </div>
                         </div>
                     </div>
+                    <div th:if="${iterStat.count % 3 == 0}" class="w-full"></div> <!-- 줄바꿈을 위해 빈 div 추가 -->
                 </div>
             </div>
         </div>
     </section>
+
+
+
+
+
+
 
 
 
