@@ -33,11 +33,6 @@ public class MainPageController {
 
 
 
-    @GetMapping("/jobRec")
-    public String jobRec() {
-        return "jobRec"; // jobRec.html로 이동
-    }
-
     @GetMapping("/logib")
     public String login() {
         return "login";
