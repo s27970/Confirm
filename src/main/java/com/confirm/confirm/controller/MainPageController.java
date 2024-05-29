@@ -31,10 +31,7 @@ public class MainPageController {
         return "jobPostingPage"; // jobPostingPage.html로 이동
     }
 
-    @GetMapping("/fairList")
-    public String fairList() {
-        return "fairList"; // fairList.html로 이동
-    }
+
 
     @GetMapping("/jobRec")
     public String jobRec() {

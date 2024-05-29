@@ -1,10 +1,12 @@
 package com.confirm.confirm.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 
 
 import java.util.Date;
 
+@Getter
 @Entity
 public class EventJPA {
 

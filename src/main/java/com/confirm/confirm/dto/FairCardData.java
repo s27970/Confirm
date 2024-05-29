@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public class FairListData {
+public class FairCardData {
     private String imagePath;
     private String fairName;
     private String organizerName;

@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 @Service
 public class JobPostingService {
@@ -20,7 +20,6 @@ public class JobPostingService {
 
     public List<PostingCardDTO> getAllJobs() {
         List<HIRE> jobList = jobRepository.findAll();
-        // jobList를 출력
         System.out.println("list : ");
         jobList.forEach(job -> System.out.println(job.toString()));
         // Job 리스트를 PostingCardDTO 리스트로 변환
