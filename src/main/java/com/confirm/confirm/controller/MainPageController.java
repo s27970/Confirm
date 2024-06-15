@@ -33,7 +33,7 @@ public class MainPageController {
 
 
 
-    @GetMapping("/login")
+    @GetMapping("/logib")
     public String login() {
         return "login";
     }
