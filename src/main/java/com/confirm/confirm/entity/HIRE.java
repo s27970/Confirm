@@ -7,7 +7,6 @@ import java.util.Date;
 
 @Entity
 @Getter
-
 public class HIRE {
 
     @Id

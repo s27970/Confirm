@@ -17,42 +17,43 @@
 </head>
 <body class="bg-gray-100 md:h-screen h-auto flex justify-center items-center">
 
-    <section class="max-w-[1000px] flex md:shadow-md shadow-none md:rounded-lg rounded-none overflow-hidden md:flex-row flex-col">
-        <div class="bg-white flex-1 p-10">
-            <div>
-                <h3 class="font-bold">Confirm <em class="text-sky-400">Login</em></h3>
-                <div class="flex gap-2 my-3">
-                    <button class="bg-blue-600 text-white text-[13px] p-2 rounded-md border flex-1"><i class="bi bi-google"></i> Sign with Goole</button>
-                    <button class="bg-black text-white text-[13px] p-2 rounded-md border flex-1" ><i class="bi bi-apple"></i> Sign with Apple</button>
-                </div>
+<section class="max-w-[1000px] flex md:shadow-md shadow-none md:rounded-lg rounded-none overflow-hidden md:flex-row flex-col">
+    <div class="bg-white flex-1 p-10">
+        <div>
+            <h3 class="font-bold">Confirm <em class="text-sky-400">Login</em></h3>
+            <div class="flex gap-2 my-3">
+                <button class="bg-blue-600 text-white text-[13px] p-2 rounded-md border flex-1"><i class="bi bi-google"></i> Sign with Google</button>
+                <button class="bg-black text-white text-[13px] p-2 rounded-md border flex-1"><i class="bi bi-apple"></i> Sign with Apple</button>
             </div>
-            <span class="block text-center relative before:content-[''] before:absolute before:h-[1px] before:w-[45%] before:bg-gray-200 before:left-0 before:top-[50%] after:content-[''] after:absolute after:h-[1px] after:w-[45%] after:bg-gray-200 after:right-0 after:top-[50%]">or</span>
-            <form class="text-[14px]" action="">
-                <div class="my-2">
-                    <b class="text-[13px] capitalize">email</b>
-                    <input class="block w-full border rounded-md bg-gray-100 p-2 text-[14px] outline-none focus:bg-white" type="email" placeholder="Enter your email">
-                </div>
-                <div class="my-2">
-                    <b class="text-[13px] capitalize">password</b>
-                    <input class="block w-full border rounded-md bg-gray-100 p-2 text-[14px] outline-none focus:bg-white" type="password" placeholder="Enter your password">
-                </div>
-                <div class="flex justify-between text-[14px]">
-                    <label><input class="translate-y-[2px]" type="checkbox"> Remeber me</label>
-                    <a class="text-sky-400 hover:underline" href="#none">Forgot password?</a>
-                </div>
-                <button class="block w-full bg-cyan-400 text-white text-[14px] p-2 rounded-md my-2 hover:bg-cyan-500">Sign in with your account</button>
-                <span>Don't have an account?<a class="text-sky-400 hover:underline" href="#none"> Sign up</a></span>
-            </form>
+        </div>
+        <span class="block text-center relative before:content-[''] before:absolute before:h-[1px] before:w-[45%] before:bg-gray-200 before:left-0 before:top-[50%] after:content-[''] after:absolute after:h-[1px] after:w-[45%] after:bg-gray-200 after:right-0 after:top-[50%]">or</span>
+        <form class="text-[14px]" method="post" action="/login">
+            <div class="my-2">
+                <b class="text-[13px] capitalize">User ID</b>
+                <input class="block w-full border rounded-md bg-gray-100 p-2 text-[14px] outline-none focus:bg-white" name="userId" type="text" placeholder="Enter your user ID">
+            </div>
+            <div class="my-2">
+                <b class="text-[13px] capitalize">Password</b>
+                <input class="block w-full border rounded-md bg-gray-100 p-2 text-[14px] outline-none focus:bg-white" name="userPassword" type="password" placeholder="Enter your password">
+            </div>
+            <div class="flex justify-between text-[14px]">
+                <label><input class="translate-y-[2px]" type="checkbox"> Remember me</label>
+                <a class="text-sky-400 hover:underline" href="#none">Forgot password?</a>
+            </div>
+            <button class="block w-full bg-cyan-400 text-white text-[14px] p-2 rounded-md my-2 hover:bg-cyan-500">Sign in with your account</button>
+            <span>Don't have an account?<a class="text-sky-400 hover:underline" href="/register"> Sign up</a></span>
+        </form>
 
+    </div>
+    <div class="bg-sky-400 flex-1 p-10 flex items-center md:order-last order-first">
+        <div class="text-white flex-col">
+            <h1 class="text-4xl font-semibold text-center"> Welcome to Confirm</h1>
+            <p class="m-10"></p>
+            <img src="../images/login.png" alt="Login">
         </div>
-        <div class="bg-sky-400 flex-1 p-10 flex items-center md:order-last order-first">
-            <div class="text-white flex-col">
-                <h1 class="text-4xl font-semibold text-center"> Welcome to Confirm</h1>
-                <p class="m-10"></p>
-                <img src="../images/login.png" alt="Login">
-            </div>
-        </div>
-    </section>
+    </div>
+</section>
 
 </body>
 </html>
+

@@ -17,121 +17,55 @@
 </head>
 <body class="bg-gray-100 md:h-screen h-auto flex justify-center items-center">
 
-    <section class="max-w-[1000px] flex md:shadow-md shadow-none md:rounded-lg rounded-none overflow-hidden md:flex-row flex-col">
-        <div class="bg-white flex-1 p-10">
-            <div>
-                <h3 class="font-bold">Confirm <em class="text-sky-400">Register</em></h3>
-            </div>
-            <form class="text-[14px]" action="">
-                <div class="my-2">
-                    <b class="text-[13px] capitalize">Name</b>
-                    <label>
-                        <input class="block w-full border rounded-md bg-gray-100 p-2 text-[14px] outline-none focus:bg-white" type="email" placeholder="Enter your email">
-                    </label>
-                </div>
-                <div class="my-2">
-                    <b class="text-[13px] capitalize">Email</b>
-                    <label>
-                        <input class="block w-full border rounded-md bg-gray-100 p-2 text-[14px] outline-none focus:bg-white" type="password" placeholder="Enter your password">
-                    </label>
-                </div>
-                <div class="my-2">
-                    <b class="text-[13px] capitalize">password</b>
-                    <label>
-                        <input class="block w-full border rounded-md bg-gray-100 p-2 text-[14px] outline-none focus:bg-white" type="password" placeholder="Enter your password">
-                    </label>
-                </div>
-
-
-            </form>
-            <div class="text-white flex-col">
-                <p class="m-10"></p>
-                <img src="../images/login.png" alt="Login">
-            </div>
-
+<section class="max-w-[1000px] flex md:shadow-md shadow-none md:rounded-lg rounded-none overflow-hidden md:flex-row flex-col">
+    <div class="bg-white flex-1 p-10">
+        <div>
+            <h3 class="font-bold">Confirm <em class="text-sky-400">Register</em></h3>
         </div>
-        <div class="bg-white flex-1 p-10 flex-col items-center">
-            <div>
-                <h3 class="font-bold">상세정보</h3>
+        <form class="text-[14px]" method="post" action="/users/new">
+            <div class="my-2">
+                <b class="text-[13px] capitalize">Name</b>
+                <label>
+                    <input class="block w-full border rounded-md bg-gray-100 p-2 text-[14px] outline-none focus:bg-white" name="userName" type="text" placeholder="Enter your name">
+                </label>
             </div>
-            <hr class="m-2">
-            <form class="my-2 text-[14px] flex-col gap-y-3" action="">
-
-                <div>
-                    <b class="text-[14px] capitalize">최종 학력</b>
-                    <div class="flex ">
-                        <label class="flex-1">4년제 대졸 <input class="ml-2 checkbox" type="checkbox" checked="checked" /></label>
-                        <label class="flex-1">전문대졸 <input class="ml-2 checkbox" type="checkbox" checked="checked" /></label>
-                        <label class="flex-1">고졸 <input class="ml-2 checkbox" type="checkbox" checked="checked" /></label>
-                    </div>
-                </div>
-
-                <div class=" w-[100px] h-[21px] "></div>
-
-                <div>
-                    <b class=" text-[14px] capitalize">경력</b>
-                    <div class="flex text-[13px] ">
-                        <label class="flex-1">신입 <input class="ml-2 checkbox" type="checkbox" checked="checked" /></label>
-                        <label class="flex-1">경력직 <input class="ml-2 checkbox" type="checkbox" checked="checked" /></label>
-                    </div>
-                </div>
-
-                <div class=" w-[100px] h-[21px] "></div>
-
-
-                <div>
-                    <b class="text-[14px] font-semibold capitalize">희망 직종</b>
-                    <div class="flex ">
-                        <label class="flex-1">영업직 <input class="ml-2 checkbox" type="checkbox" checked="checked" /></label>
-                        <label class="flex-1">사무직 <input class="ml-2 checkbox" type="checkbox" checked="checked" /></label>
-                        <label class="flex-1">기술직 <input class="ml-2 checkbox" type="checkbox" checked="checked" /></label>
-                    </div>
-                </div>
-
-                <div class=" w-[100px] h-[21px] "></div>
-
-
-                <div>
-                    <b class="text-[14px] font-semibold capitalize">희망 기업 규모</b>
-                    <div class="flex ">
-                        <label class="flex-1">중소기업 <input class="ml-2 checkbox" type="checkbox" checked="checked" /></label>
-                        <label class="flex-1">중견기업 <input class="ml-2 checkbox" type="checkbox" checked="checked" /></label>
-                        <label class="flex-1">대기업 <input class="ml-2 checkbox" type="checkbox" checked="checked" /></label>
-                        <label class="flex-1">상관없음 <input class="ml-2 checkbox" type="checkbox" checked="checked" /></label>
-
-                    </div>
-                </div>
-
-                <div class=" w-[100px] h-[21px] "></div>
-
-
-                <div>
-                    <div class="my-2">
-                        <b class="text-[14px] capitalize">희망 지역</b>
-                        <label>
-                            <input class="block w-full border rounded-md bg-gray-100 p-2 text-[14px] outline-none focus:bg-white" type="password" placeholder="Enter your password">
-                        </label>
-                    </div>
-                </div>
-
-                <div class=" w-[100px] h-[21px] "></div>
-
-                <div>
-                    <div class="my-2">
-                        <b class="text-[14px] capitalize">희망 급여</b>
-                        <label>
-                            <input class="block w-full border rounded-md bg-gray-100 p-2 text-[14px] outline-none focus:bg-white" type="password" placeholder="Enter your password">
-                        </label>
-                    </div>
-                </div>
-
-                <div class=" w-[100px] h-[21px] "></div>
-
-                <button class="block w-full bg-cyan-400 text-white text-[14px] p-2 rounded-md my-2 hover:bg-cyan-500">Register</button>
-            </form>
-
+            <div class="my-2">
+                <b class="text-[13px] capitalize">Email</b>
+                <label>
+                    <input class="block w-full border rounded-md bg-gray-100 p-2 text-[14px] outline-none focus:bg-white" name="userEmail" type="email" placeholder="Enter your email">
+                </label>
+            </div>
+            <div class="my-2">
+                <b class="text-[13px] capitalize">Password</b>
+                <label>
+                    <input class="block w-full border rounded-md bg-gray-100 p-2 text-[14px] outline-none focus:bg-white" name="userPassword" type="password" placeholder="Enter your password">
+                </label>
+            </div>
+            <div class="my-2">
+                <b class="text-[14px] capitalize">최종 학력</b>
+                <label>
+                    <input class="block w-full border rounded-md bg-gray-100 p-2 text-[14px] outline-none focus:bg-white" name="userSchool" type="text" placeholder="Enter your education level">
+                </label>
+            </div>
+            <div class="my-2">
+                <b class="text-[14px] capitalize">경력</b>
+                <label>
+                    <input class="block w-full border rounded-md bg-gray-100 p-2 text-[14px] outline-none focus:bg-white" name="userCareer" type="text" placeholder="Enter your career">
+                </label>
+            </div>
+            <div class="my-2">
+                <b class="text-[14px] capitalize">희망 직종</b>
+                <label>
+                    <input class="block w-full border rounded-md bg-gray-100 p-2 text-[14px] outline-none focus:bg-white" name="userPreviousJobCategory" type="text" placeholder="Enter your previous job category">
+                </label>
+            </div>
+            <button class="block w-full bg-cyan-400 text-white text-[14px] p-2 rounded-md my-2 hover:bg-cyan-500">Register</button>
+        </form>
+        <div class="text-white flex-col">
+            <p class="m-10"></p>
+            <img src="../images/login.png" alt="Login">
         </div>
-    </section>
-
+    </div>
+</section>
 </body>
 </html>

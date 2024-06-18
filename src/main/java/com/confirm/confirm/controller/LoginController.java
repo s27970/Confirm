@@ -3,13 +3,12 @@ package com.confirm.confirm.controller;
 import com.confirm.confirm.dto.Login;
 import com.confirm.confirm.service.LoginService;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-
-import java.util.Map;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class LoginController {
@@ -23,15 +22,17 @@ public class LoginController {
 
     @GetMapping("/login")
     public String getLogin() {
-        return "login.html";
+        return "login";
     }
 
     @PostMapping("/login")
-    public String postLogin(@RequestBody Map<String, String> requestBody, HttpServletResponse response) {
-        response.addCookie(
-                loginService.login(
-                        new Login(requestBody.get("id"), requestBody.get("password"))));
-
-        return "redirect:/";
+    public String postLogin(@RequestParam String userId, @RequestParam String userPassword, HttpSession session) {
+        boolean success = loginService.login(new Login(userId, userPassword), session);
+        if (success) {
+            return "redirect:/mainpage";
+        } else {
+            return "redirect:/login?error=true";
+        }
     }
 }
+
