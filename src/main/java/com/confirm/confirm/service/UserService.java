@@ -1,48 +1,26 @@
 package com.confirm.confirm.service;
 
+import com.confirm.confirm.dto.AddUserRequest;
 import com.confirm.confirm.entity.User;
 import com.confirm.confirm.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
+@RequiredArgsConstructor
 @Service
 public class UserService {
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public void saveUser(User user) {
-        userRepository.save(user);
+    public Long save(AddUserRequest dto){
+        return userRepository.save(User.builder()
+                .email(dto.getEmail())
+                // 패스워드 암호화
+                .password(bCryptPasswordEncoder.encode(dto.getPassword()))
+                .build()).getId();
     }
 
-    public List<User> getAllUsers() {
-        return userRepository.findAll();
-    }
-
-    public User getUserById(Long id) {
-        return userRepository.findById(id).orElse(null);
-    }
-
-    public void updateUser(Long id, User userDetails) {
-        User user = getUserById(id);
-        if (user != null) {
-            user.setUserName(userDetails.getUserName());
-            user.setUserPassword(userDetails.getUserPassword());
-            user.setUserSchool(userDetails.getUserSchool());
-            user.setUserCareer(userDetails.getUserCareer());
-            user.setUserPreviousJobCategory(userDetails.getUserPreviousJobCategory());
-            userRepository.save(user);
-        }
-    }
-
-    public void deleteUser(Long id) {
-        userRepository.deleteById(id);
-    }
-
-    public User getUserByUsername(String username) {
-        return userRepository.findByUserName(username);
-    }
 }
-

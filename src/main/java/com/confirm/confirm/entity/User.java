@@ -1,41 +1,76 @@
 package com.confirm.confirm.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
 import java.util.List;
 
-@Entity
 @Table(name = "users")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class User {
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Getter
+@Entity
+public class User implements UserDetails { // UserDetails를 상속받아 인증 객체로 사용
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userId;
+    @Column(name = "id", updatable = false)
+    private Long id;
 
-    private String userName;
-    private String userPassword;
-    private String userSchool;
-    private String userCareer;
-    private String userPreviousJobCategory;
+    @Column(name = "email", nullable = false, unique = true)
+    private String email;
 
-    @OneToMany(mappedBy = "user")
-    private List<UserLog> userLogs;
+    @Column(name = "password", nullable = false)
+    private String password;
 
-    // Custom constructor without userId
-    public User(String userName,
-                String userPassword,
-                String userSchool,
-                String userCareer,
-                String userPreviousJobCategory) {
-        this.userName = userName;
-        this.userPassword = userPassword;
-        this.userSchool = userSchool;
-        this.userCareer = userCareer;
-        this.userPreviousJobCategory = userPreviousJobCategory;
+    @Builder
+    public User(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
+
+    @Override // 권한 반환
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority("user"));
+    }
+
+    @Override
+    public String getUsername() {
+        return email;
+    }
+
+    @Override
+    public String getPassword() {
+        return password;
+    }
+
+    // 계정 만료 여부 반환
+    @Override
+    public boolean isAccountNonExpired(){
+        return true; // true -> 만료되지 않음
+    }
+
+    // 계정 잠금 여부 반환
+    @Override
+    public boolean isAccountNonLocked(){
+        return true; // true -> 잠금되지 않음
+    }
+
+    // 패스워드 만료 여부 반환
+    @Override
+    public boolean isCredentialsNonExpired(){
+        return true; // true -> 만료되지 않음
+    }
+
+    // 계정 사용 가능 여부 변환
+    @Override
+    public boolean isEnabled(){
+        return true; // true -> 사용 가능
     }
 }

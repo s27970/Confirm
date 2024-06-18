@@ -17,13 +17,14 @@ public class UserLog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userId;
+    private Long id;
 
     private LocalDateTime timestamp;
     private String action; // 클릭 또는 좋아요 등의 동작
     private String details; // 공고 ID 또는 기타 세부 정보
 
     @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     // Custom constructor for required fields
@@ -34,3 +35,4 @@ public class UserLog {
         this.user = user;
     }
 }
+
