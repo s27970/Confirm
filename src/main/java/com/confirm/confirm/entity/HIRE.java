@@ -11,9 +11,9 @@ public class HIRE {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id;  // Integer에서 Long으로 변경
 
-    private String jotTitle;
+    private String jobTitle;
 
     private String companySize;
 

@@ -29,7 +29,7 @@ public class RecommendationService {
         Map<String, Integer> position1Count = new HashMap<>();
 
         for (UserLog log : userLogs) {
-            HIRE hire = hireRepository.findById((int) Long.parseLong(log.getDetails())).orElse(null);
+            HIRE hire = hireRepository.findById(Long.parseLong(log.getDetails())).orElse(null);
             if (hire != null) {
                 majorCount.put(hire.getMajor(), majorCount.getOrDefault(hire.getMajor(), 0) + 1);
                 jobCategoryCount.put(hire.getJobCategory(), jobCategoryCount.getOrDefault(hire.getJobCategory(), 0) + 1);
