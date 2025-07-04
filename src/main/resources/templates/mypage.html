@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>My Page - 관심 등록한 공고</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/images/logo.png">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- tailwind config Import -->
+  <script src="/js/tailwind.config.js"></script>
+  <!-- Custom CSS -->
+  <link href="/css/style.css" rel="stylesheet">
+  <link rel="icon" href="/images/logo.png">
+  <!-- Remix Icons CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css">
+</head>
+<body>
+<section class="border-b border-gray-200">
+  <div class="max-w-[1280px] mx-auto p-4 flex justify-between items-center">
+    <div class="flex gap-10 items-center">
+      <div class="flex gap-1 items-center">
+        <a href="/mainpage">
+          <img class="w-[30px] border-5 border-white cursor-pointer" src="/images/logo.png" alt="logo">
+        </a>
+        <a href="/mainpage" class="text-2xl font-bold leading-[1.6em] translate-y-[-2px] cursor-pointer">
+          CONFIRM
+        </a>
+      </div>
+      <div class="flex justify-start gap-4 space-x-8">
+        <a href="/jobPostingPage" class="text-[18px] font-bold px-4 py-2 rounded bg-white hover:bg-white active:bg-white cursor-pointer">채용공고</a>
+        <a href="/fairList" class="text-[18px] font-bold px-4 py-2 rounded bg-white hover:bg-white active:bg-white cursor-pointer tab-active">행사정보</a>
+        <a href="/jobRec" class="text-[18px] font-bold px-4 py-2 rounded bg-white hover:bg-white active:bg-white cursor-pointer">공고등록</a>
+      </div>
+    </div>
+    <div class="flex gap-3">
+      <button type="button" class="btn btn-secondary" onclick="location.href='/logout'">로그아웃</button>
+      <a href="/mypage" class="text-[14px] underline text-gray-500 cursor-pointer">마이페이지</a>
+    </div>
+    <script src="/js/mainpage.js"></script
+  </div>
+</section>
+<div class="max-w-[1280px] mx-auto p-4 text-left text-[18px] font-bold leading-[0.5em]"># 관심 등록한 공고</div>
+<div class="max-w-[1280px] mx-auto p-4 grid">
+  <div class="flex flex-wrap -mx-4" id="interestedJobs">
+    <!-- 관심 등록한 공고 리스트 -->
+    <div class="w-full md:w-1/3 px-4 mb-8">
+      <div class="overflow-hidden bg-white group rounded-xl shadow-xl">
+        <div class="h-[150px] relative overflow-hidden">
+          <img class="object-cover w-full h-full group-hover:scale-110 transition-all duration-[600ms]"
+               src="/images/firm1.png"
+               alt="job image">
+          <button class="text-white absolute right-[20px] top-[10px] text-[25px] cursor-pointer active:scale-[0.8] transition-all duration-[300ms]">
+            <i class="ri-heart-3-line"></i>
+          </button>
+          <div class="absolute bottom-0 left-0 w-full bg-black bg-opacity-50 p-4 text-white">
+            <div class="text-[12px]">
+              <b class="pr-2">회사 규모</b>
+              <span class="border-l-[1px] pl-2 font-semibold">중견 기업</span>
+            </div>
+            <div class="text-[12px] mt-1">
+              <b class="pr-2">산업분야</b>
+              <span>IT / 소프트웨어</span>
+            </div>
+          </div>
+        </div>
+        <div class="p-4 text-left" style="padding-left: 0;">
+          <a href="#" class="text-md font-bold">TechCorp</a>
+          <div class="text-[10px] mt-2">
+            <b class="pr-2">포지션: </b>
+            <span>⦁ 해외영업 팀장(리더급) | PM (Product Manager)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="w-full md:w-1/3 px-4 mb-8">
+      <div class="overflow-hidden bg-white group rounded-xl shadow-xl">
+        <div class="h-[150px] relative overflow-hidden">
+          <img class="object-cover w-full h-full group-hover:scale-110 transition-all duration-[600ms]"
+               src="/images/firm2.png"
+               alt="job image">
+          <button class="text-white absolute right-[20px] top-[10px] text-[25px] cursor-pointer active:scale-[0.8] transition-all duration-[300ms]">
+            <i class="ri-heart-3-line"></i>
+          </button>
+          <div class="absolute bottom-0 left-0 w-full bg-black bg-opacity-50 p-4 text-white">
+            <div class="text-[12px]">
+              <b class="pr-2">회사 규모</b>
+              <span class="border-l-[1px] pl-2 font-semibold">대기업</span>
+            </div>
+            <div class="text-[12px] mt-1">
+              <b class="pr-2">산업분야</b>
+              <span>금융 / 보험</span>
+            </div>
+          </div>
+        </div>
+        <div class="p-4 text-left" style="padding-left: 0;">
+          <a href="#" class="text-md font-bold">Finance Inc.</a>
+          <div class="text-[10px] mt-2">
+            <b class="pr-2">포지션: </b>
+            <span>⦁ 마케팅 매니저 | 디지털 마케터</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="w-full md:w-1/3 px-4 mb-8">
+      <div class="overflow-hidden bg-white group rounded-xl shadow-xl">
+        <div class="h-[150px] relative overflow-hidden">
+          <img class="object-cover w-full h-full group-hover:scale-110 transition-all duration-[600ms]"
+               src="/images/firm3.png"
+               alt="job image">
+          <button class="text-white absolute right-[20px] top-[10px] text-[25px] cursor-pointer active:scale-[0.8] transition-all duration-[300ms]">
+            <i class="ri-heart-3-line"></i>
+          </button>
+          <div class="absolute bottom-0 left-0 w-full bg-black bg-opacity-50 p-4 text-white">
+            <div class="text-[12px]">
+              <b class="pr-2">회사 규모</b>
+              <span class="border-l-[1px] pl-2 font-semibold">스타트업</span>
+            </div>
+            <div class="text-[12px] mt-1">
+              <b class="pr-2">산업분야</b>
+              <span>헬스케어 / 바이오</span>
+            </div>
+          </div>
+        </div>
+        <div class="p-4 text-left" style="padding-left: 0;">
+          <a href="#" class="text-md font-bold">HealthTech</a>
+          <div class="text-[10px] mt-2">
+            <b class="pr-2">포지션: </b>
+            <span>⦁ 데이터 과학자 | 머신러닝 엔지니어</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

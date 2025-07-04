@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Card</title>
+  <!-- Remix Icons CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- tailwind config Import -->
+  <script src="script/tailwind.config.js"></script>
+  <!-- Custom CSS -->
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body class="bg-slate-200 h-screen text-[#333] flex justify-center items-center font-montserrat">
+<div class="w-[360px] rounded-xl overflow-hidden shadow-xl bg-white group">
+    <!-- 이미지 영역의 높이를 h-[150px]로 줄임 -->
+    <div class="h-[150px] relative overflow-hidden">
+        <img class="object-cover w-full h-full group-hover:scale-110 transition-all duration-[600ms]" src="../images/firm1.png" alt="house thum">
+        <button class="text-white absolute right-[20px] top-[10px] text-[25px] cursor-pointer active:scale-[0.8] transition-all duration-[300ms]"><i class="ri-heart-3-line"></i></button>
+        <!-- 이미지 안에 흰색 텍스트로 '회사 명' 추가 -->
+        <h3 class="text-3xl my-1 text-white absolute bottom-0 left-0 p-4">회사 명</h3>
+    </div>
+    <!-- 내용 영역의 최소 높이를 min-h-[250px]로 줄임 -->
+    <div class="min-h-[250px]">
+        <div class="p-4">
+            <div>
+                <b class="text-[14px] pr-2">회사 규모</b>
+                <span class="border-l-[1px] pl-4 text-[14px] font-semibold">중견 기업</span>
+            </div>
+            <!-- 이미지 안으로 이동된 '회사 명' 텍스트 삭제 -->
+            <span>산업 분야 / 산업 분야</span>
+        </div>
+        <div class="flex gap-6 text-[20px] border-y-[1px] p-4">
+            <div class="flex items-center">
+                <span><i class="ri-money-dollar-circle-line"></i></span>
+                <span class="text-[16px] mx-2">월급</span>
+            </div>
+            <div class="flex items-center">
+                <span><i class="ri-road-map-line"></i></span>
+                <span class="text-[16px] mx-2">위치</span>
+            </div>
+            <div class="flex items-center">
+                <span><i class="ri-account-circle-line"></i></span>
+                <span class="text-[16px] mx-2">학력</span>
+            </div>
+        </div>
+        <div class="p-4">
+            <span class="font-semibold text-[13px] text-gray-500 capitalize">채용 관련 정보</span>
+            <div class="flex gap-3 mt-2">
+                <div class="text-[14px]">
+                    <b class="block">⦁ 해외영업 팀장(리더급)</b>
+                    <span>⦁ PM (Product Manager)</span>
+                </div>
+                <button class="uppercase bg-sky-400 text-white font-medium rounded-md px-5 ml-auto hover:bg-sky-500">채용 공고</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
